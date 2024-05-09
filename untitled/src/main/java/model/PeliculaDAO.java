@@ -16,7 +16,9 @@ public class PeliculaDAO implements DAO<Pelicula, Integer> {
                     "FROM peliculas p " +
                     "INNER JOIN peliculas_categorias pc ON p.id = pc.id_pelicula " +
                     "INNER JOIN categorias c ON pc.id_categoria = c.id ";
-    
+
+
+
     private final String SQL_SEARCH_Start
             = "SELECT * FROM pelicula WHERE ID_Pelicula IN ( SELECT ID_Pelicula FROM clasificar WHERE ID_Clasificacion IN ( SELECT ID_Clasificacion FROM clasificar WHERE ID_Genero IN (SELECT ID_Genero FROM genero WHERE UPPER(Genero) LIKE '%";
     private final String SQL_SEARCH_Final

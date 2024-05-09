@@ -16,12 +16,25 @@ public class Controller extends HttpServlet {
         processRequest(req, resp);
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        processRequest(req, resp);
+    }
+
     protected void processRequest(
             HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
 
+        response.setContentType("text/plain;charset=UTF-8");
+        response.setHeader("Access-Control-Allow-Origin", "*"); // Permitir acceso desde cualquier origen
+        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS"); // Permitir los métodos HTTP
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization"); // Permitir ciertos encabezados
+        response.setHeader("Access-Control-Max-Age", "3600"); // Cache de opciones preflight durante 1 hora
+
+
         //http://localhost:8080/untitled/Controller?ACTION=PELICULA.FIND_ALL
+        // http://localhost:8080/API_JAVA_MYSQL/Controller?ACTION=PELICULA.FILTER&FILTRO=DRAMA
 
       /*  response.setContentType("text/plain;charset=UTF-8");
         response.setHeader("Access-Control-Allow-Origin", "*");
